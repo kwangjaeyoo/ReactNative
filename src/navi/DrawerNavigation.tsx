@@ -49,7 +49,7 @@ const LeftMenuContent = ({navigation}: DrawerContentComponentProps) => {
         title="Webview"
         gotoNavi={() => {
           navigation.closeDrawer()
-          navigation.navigate('webview')
+          navigation.navigate('webview', {url: 'https://www.naver.com'})
         }}
       />
       <MenuLayout
