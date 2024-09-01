@@ -16,9 +16,7 @@ const LeftMenuContent = ({navigation}: DrawerContentComponentProps) => {
     <>
       <Text>NaviDrawer</Text>
       <TouchableOpacity
-        // title="Go somewhere"
         onPress={() => {
-          // Navigate using the `navigation` prop that you received
           navigation.navigate('SomeScreen')
         }}
       />
