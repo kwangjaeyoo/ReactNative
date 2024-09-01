@@ -3,12 +3,12 @@ import './gesture-handler'
 
 import {SafeAreaProvider} from 'react-native-safe-area-context'
 
-import Navigation from './src/Navigation'
+import StackNavigation from './src/navi/StackNavigation'
 
 function App(): React.JSX.Element {
   return (
     <SafeAreaProvider>
-      <Navigation />
+      <StackNavigation />
     </SafeAreaProvider>
   )
 }

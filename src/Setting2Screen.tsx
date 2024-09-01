@@ -1,11 +1,11 @@
 import {SafeAreaView, Text} from 'react-native'
 
-const SettingsScreen = () => {
+const Settings2Screen = () => {
   return (
     <SafeAreaView className="flex-1 bg-[#8f8686]">
-      <Text>SettingsScreen</Text>
+      <Text>Settings2Screen</Text>
     </SafeAreaView>
   )
 }
 
-export default SettingsScreen
+export default Settings2Screen
