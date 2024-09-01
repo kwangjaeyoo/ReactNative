@@ -1,10 +1,15 @@
 import {NavigationContainer} from '@react-navigation/native'
 import {createNativeStackNavigator} from '@react-navigation/native-stack'
 
-import WebviewScreen from '../WebviewScreen'
+import WebviewScreen from '../screen/webview/WebviewScreen'
 import DrawerNavigation from './DrawerNavigation'
 
-const Stack = createNativeStackNavigator()
+type StackParamList = {
+  menu: undefined
+  webview: {url: string}
+}
+
+const Stack = createNativeStackNavigator<StackParamList>()
 
 const StackNavigation = () => {
   return (

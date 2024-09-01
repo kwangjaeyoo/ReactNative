@@ -2,7 +2,7 @@ import {useState} from 'react'
 import {SafeAreaView, Text} from 'react-native'
 import WebView from 'react-native-webview'
 
-import Header from './Header'
+import Header from '../Header'
 import LinearProgress from './LinearProgress'
 
 type Props = {

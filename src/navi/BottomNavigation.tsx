@@ -8,8 +8,8 @@ import {
 } from '@react-navigation/bottom-tabs'
 import {DrawerActions} from '@react-navigation/native'
 
-import HomeScreen from '../HomeScreen'
-import SettingsScreen from '../SettingScreen'
+import HomeScreen from '../screen/HomeScreen'
+import SettingsScreen from '../screen/SettingScreen'
 
 const BottomTab = createBottomTabNavigator()
 

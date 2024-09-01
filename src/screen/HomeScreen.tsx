@@ -3,7 +3,7 @@ import {SafeAreaView, ScrollView, Text, View} from 'react-native'
 import Header from './Header'
 
 const HomeScreen = () => {
-  const packageVersion = require('../package.json')
+  const packageVersion = require('../../package.json')
 
   return (
     <SafeAreaView className="flex-1">
