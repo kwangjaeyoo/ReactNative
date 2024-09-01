@@ -20,7 +20,9 @@ const Header = ({title, isBack, navigation}: prop) => {
         <TouchableOpacity
           className="min-w-10 flex items-center justify-center"
           onPress={() => {
-            if (navigation) navigation.goBack()
+            if (navigation) {
+              navigation.goBack()
+            }
           }}>
           <Icon name="angle-left" size={20} />
         </TouchableOpacity>
