@@ -1,5 +1,6 @@
 import React from 'react'
 import {Text, TouchableOpacity, View} from 'react-native'
+import Icon from 'react-native-vector-icons/Feather'
 
 import {
   BottomTabBarProps,
@@ -16,11 +17,11 @@ const MenuBar = ({state, descriptors, navigation}: BottomTabBarProps) => {
   return (
     <View className="h-10 flex-row">
       <TouchableOpacity
-        className="flex items-center justify-center"
+        className="w-10 flex items-center justify-center"
         onPress={() => {
           navigation.dispatch(DrawerActions.toggleDrawer())
         }}>
-        <Text>menu</Text>
+        <Icon name="menu" size={20} />
       </TouchableOpacity>
 
       {state.routes.map((route, index) => {

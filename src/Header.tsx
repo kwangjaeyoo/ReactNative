@@ -1,4 +1,5 @@
 import {Text, TouchableOpacity, View} from 'react-native'
+import Icon from 'react-native-vector-icons/FontAwesome'
 
 interface prop {
   title: string
@@ -18,7 +19,7 @@ const Header = ({title, isBack}: prop) => {
         <TouchableOpacity
           className="min-w-10 flex items-center justify-center"
           onPress={() => {}}>
-          <Text>BACK</Text>
+          <Icon name="angle-left" size={20} />
         </TouchableOpacity>
       )}
       <View className="flex-1 items-center justify-center">
