@@ -11,16 +11,55 @@ import BottomNavigation from './BottomNavigation'
 
 const Drawer = createDrawerNavigator()
 
-const LeftMenuContent = ({navigation}: DrawerContentComponentProps) => {
+const MenuLayout = ({
+  title,
+  gotoNavi,
+}: {
+  title: string
+  gotoNavi: () => void
+}) => {
   return (
     <>
-      <Text>NaviDrawer</Text>
       <TouchableOpacity
+        className="h-10 flex justify-center px-2"
         onPress={() => {
-          navigation.navigate('SomeScreen')
+          gotoNavi()
+        }}>
+        <Text>{title}</Text>
+      </TouchableOpacity>
+      <View className="h-[1px] bg-[#f4f4f4]" />
+    </>
+  )
+}
+
+const LeftMenuContent = ({navigation}: DrawerContentComponentProps) => {
+  return (
+    <View>
+      <View className="h-20 bg-[#c2abed] p-2 pt-10">
+        <Text>Drawer Menu</Text>
+      </View>
+      <MenuLayout
+        title="Home"
+        gotoNavi={() => {
+          navigation.closeDrawer()
+          navigation.navigate('home')
         }}
       />
-    </>
+      <MenuLayout
+        title="Webview"
+        gotoNavi={() => {
+          navigation.closeDrawer()
+          navigation.navigate('webview')
+        }}
+      />
+      <MenuLayout
+        title="Setting"
+        gotoNavi={() => {
+          navigation.closeDrawer()
+          navigation.navigate('settings')
+        }}
+      />
+    </View>
   )
 }
 

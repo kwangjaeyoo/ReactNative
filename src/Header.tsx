@@ -4,9 +4,10 @@ import Icon from 'react-native-vector-icons/FontAwesome'
 interface prop {
   title: string
   isBack?: boolean
+  navigation?: any
 }
 
-const Header = ({title, isBack}: prop) => {
+const Header = ({title, isBack, navigation}: prop) => {
   return (
     <View
       className="
@@ -18,7 +19,9 @@ const Header = ({title, isBack}: prop) => {
       {isBack && (
         <TouchableOpacity
           className="min-w-10 flex items-center justify-center"
-          onPress={() => {}}>
+          onPress={() => {
+            if (navigation) navigation.goBack()
+          }}>
           <Icon name="angle-left" size={20} />
         </TouchableOpacity>
       )}

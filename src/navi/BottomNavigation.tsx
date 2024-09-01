@@ -82,8 +82,8 @@ const BottomNavigation = () => {
       screenOptions={{
         headerShown: false,
       }}>
-      <BottomTab.Screen name="Home" component={HomeScreen} />
-      <BottomTab.Screen name="Settings" component={SettingsScreen} />
+      <BottomTab.Screen name="home" component={HomeScreen} />
+      <BottomTab.Screen name="settings" component={SettingsScreen} />
     </BottomTab.Navigator>
   )
 }
