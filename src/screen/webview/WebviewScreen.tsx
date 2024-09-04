@@ -27,7 +27,7 @@ const WebviewScreen = ({navigation, route}: Props) => {
         <>
           <LinearProgress progress={loading} />
           <WebView
-            source={{uri: 'https://naver.com/'}}
+            source={{uri: url}}
             onLoad={syntheticEvent => {
               const {nativeEvent} = syntheticEvent
               console.log('url ', nativeEvent.url)

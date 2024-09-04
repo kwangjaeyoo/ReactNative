@@ -4,9 +4,9 @@ import Header from './Header'
 
 const SettingsScreen = () => {
   return (
-    <SafeAreaView className="flex-1 bg-[#8f8686]">
+    <SafeAreaView className="flex-1 bg-[#f4f4f4]">
       <Header title="SettingsScreen" />
-      <Text>SettingsScreen</Text>
+      <Text>SettingsScreen </Text>
     </SafeAreaView>
   )
 }

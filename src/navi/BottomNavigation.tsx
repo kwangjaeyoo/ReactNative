@@ -9,6 +9,7 @@ import {
 import {DrawerActions} from '@react-navigation/native'
 
 import HomeScreen from '../screen/HomeScreen'
+import NewsScreen from '../screen/NewsScreen'
 import SettingsScreen from '../screen/SettingScreen'
 
 const BottomTab = createBottomTabNavigator()
@@ -83,6 +84,7 @@ const BottomNavigation = () => {
         headerShown: false,
       }}>
       <BottomTab.Screen name="home" component={HomeScreen} />
+      <BottomTab.Screen name="list" component={NewsScreen} />
       <BottomTab.Screen name="settings" component={SettingsScreen} />
     </BottomTab.Navigator>
   )
