@@ -8,10 +8,10 @@ interface Props {
 
 const NewsItem: React.FC<Props> = ({item, goWeb}) => {
   return (
-    <View className="p-2 border-[#707070] border-l-[1px] border-r-[1px] border-t-[1px] ">
-      <Text> author : {item.author}</Text>
-      <Text> date : {item.publishedAt}</Text>
-      <Text> title : {item.title}</Text>
+    <View className="p-2 border-[#707070] border-l-[1px] border-r-[1px] border-t-[1px]">
+      <Text>Author : {item.author}</Text>
+      <Text>Date : {item.publishedAt}</Text>
+      <Text>Title : {item.title}</Text>
       <View className="flex items-end mt-1">
         <TouchableOpacity
           className="bg-slate-300 px-2"
