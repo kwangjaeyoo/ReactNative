@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react'
+import {useCallback, useEffect, useState} from 'react'
 import {FlatList, SafeAreaView} from 'react-native'
 
 import {getNewsApi} from '../api/getNews'
@@ -10,23 +10,30 @@ const NewsScreen = ({navigation}: {navigation: any}) => {
   const loading = isLoadingStore()
   const [news, setNews] = useState([])
 
-  useEffect(() => {
-    const callApi = async () => {
-      try {
-        loading.onLoading()
+  const callApi = useCallback(async () => {
+    try {
+      loading.onLoading()
 
-        const response = await getNewsApi('top-headlines')
+      const response = await getNewsApi('top-headlines')
 
-        if (response && response.status === 200) {
-          const data = response.data.articles
-          setNews(data)
-          // console.log(data.length)
-          // console.log(data[2])
-        }
-        loading.offLoading()
-      } catch (e) {}
+      if (response && response.status === 200) {
+        const data = response.data.articles
+        setNews(data)
+        // console.log(data.length)
+        // console.log(data[2])
+      }
+    } catch (e) {
+    } finally {
+      loading.offLoading()
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  useEffect(() => {
     callApi()
+    const unsubscribe = navigation.addListener('tabPress', callApi)
+
+    return () => unsubscribe()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
