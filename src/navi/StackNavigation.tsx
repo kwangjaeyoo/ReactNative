@@ -5,12 +5,12 @@ import LoadingView from '../screen/LoadingView'
 import WebviewScreen from '../screen/webview/WebviewScreen'
 import DrawerNavigation from './DrawerNavigation'
 
-type StackParamList = {
+export type NaviParamList = {
   menu: undefined
   webview: {url: string}
 }
 
-const Stack = createNativeStackNavigator<StackParamList>()
+const Stack = createNativeStackNavigator<NaviParamList>()
 
 const StackNavigation = () => {
   return (

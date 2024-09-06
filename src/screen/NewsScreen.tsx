@@ -31,8 +31,8 @@ const NewsScreen = ({navigation}: {navigation: any}) => {
 
   useEffect(() => {
     callApi()
-    const unsubscribe = navigation.addListener('tabPress', callApi)
 
+    const unsubscribe = navigation.addListener('tabPress', callApi)
     return () => unsubscribe()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
