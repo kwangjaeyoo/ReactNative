@@ -44,9 +44,10 @@ const NewsScreen = ({navigation}: {navigation: any}) => {
       <FlatList
         className="p-2"
         data={news}
-        renderItem={data => (
+        renderItem={({item, index}: {item: any; index: number}) => (
           <NewsItem
-            item={data.item}
+            item={item}
+            isLast={index === news.length - 1}
             goWeb={url => {
               navigation.navigate('webview', {url: url})
             }}
