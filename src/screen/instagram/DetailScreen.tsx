@@ -46,7 +46,7 @@ const DetailScreen = () => {
     })
     .onEnd(() => {
       if (translateY.value > 50 || translateX.value > 90) {
-        go_back()
+        goBackFun()
       } else {
         translateX.value = withTiming(0, {duration: 100})
         translateY.value = withTiming(0, {duration: 100})
@@ -55,7 +55,7 @@ const DetailScreen = () => {
       }
     })
 
-  const go_back = () => {
+  const goBackFun = () => {
     opacity.value = 0
     callback && runOnJS(callback)()
     runOnJS(navigation.goBack)()
@@ -91,14 +91,7 @@ const DetailScreen = () => {
 
   return (
     <View className="flex-1 bg-[#262626]">
-      <Header
-        isBack
-        bgColor="bg-[#262626]"
-        isBackOnClick={() => {
-          go_back()
-          console.log('!')
-        }}
-      />
+      <Header isBack bgColor="bg-[#262626]" isBackOnClick={goBackFun} />
       <GestureDetector gesture={gesture}>
         <Animated.View
           style={[
