@@ -6,6 +6,7 @@ import MainImageView, {IMainImage} from './MainImageView'
 
 const {height: HEIGHT_SCREEN} = Dimensions.get('window')
 
+// https://trai-nguyen.medium.com/react-native-instagram-navigation-a8a376ebbf29
 const InstagramScreen = () => {
   const renderItem = ({item}: {item: IMainImage}) => {
     return <MainImageView {...item} />
