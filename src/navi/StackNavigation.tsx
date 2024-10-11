@@ -16,7 +16,12 @@ export type NaviParamList = {
   webview: {url: string}
   instagram: undefined
   postScreen: {data: IMainImage}
-  detailScreen: {data: {id: number; image: string}}
+  detailScreen: {
+    data: {id: number; image: string}
+    from?: any
+    parentId?: number
+    callback?: () => void
+  }
 }
 
 const Stack = createNativeStackNavigator<NaviParamList>()

@@ -1,4 +1,10 @@
-import {Dimensions, FlatList, Image, TouchableOpacity, View} from 'react-native'
+import {useCallback} from 'react'
+import {Dimensions, FlatList, TouchableOpacity, View} from 'react-native'
+import Animated, {
+  useAnimatedStyle,
+  useSharedValue,
+  withTiming,
+} from 'react-native-reanimated'
 
 import {RouteProp, useNavigation, useRoute} from '@react-navigation/native'
 import {NativeStackNavigationProp} from '@react-navigation/native-stack'
@@ -22,12 +28,37 @@ const PostScreen = () => {
   const {data} = router.params
 
   const navigation = useNavigation<NavigationProp>()
+  const avatarOpacity = useSharedValue(1)
+
+  const avatarAnimated = useAnimatedStyle(() => ({
+    opacity: avatarOpacity.value,
+  }))
+
+  const onBackCallback = useCallback(() => {
+    avatarOpacity.value = withTiming(1, {duration: 300})
+  }, [avatarOpacity])
+
+  const onNavigateDetail = useCallback(
+    (currentData: {id: number; image: string}) => {
+      avatarOpacity.value = withTiming(0, {duration: 300})
+      navigation.navigate('detailScreen', {
+        data: currentData,
+        parentId: data.id,
+        callback: onBackCallback,
+        from: 'Post',
+      })
+    },
+    [avatarOpacity, data.id, navigation, onBackCallback],
+  )
 
   return (
-    <View className="flex-1 bg-[#262626]">
+    <View
+      className="flex-1 bg-[#262626]"
+      key={'PostDetail' + data.id.toString()}>
       <Header isBack bgColor="bg-[#262626]" />
-      <Image
+      <Animated.Image
         className="w-[100px] h-[100px] rounded-full mt-5 self-center"
+        style={[avatarAnimated]}
         src={data.avatar}
         resizeMode={'center'}
       />
@@ -39,17 +70,21 @@ const PostScreen = () => {
           renderItem={({item}) => {
             return (
               <TouchableOpacity
-                onPress={() =>
-                  navigation.navigate('detailScreen', {data: item})
-                }
+                onPress={() => onNavigateDetail(item)}
                 activeOpacity={0.9}>
-                <Image
-                  src={item.image}
-                  style={{
-                    width: WIDTH_SCREEN / 3,
-                    height: (WIDTH_SCREEN / 3) * 1.5,
-                  }}
-                />
+                <Animated.View
+                  sharedTransitionTag={'Post' + item.id.toString()}>
+                  <Animated.Image
+                    src={item.image}
+                    style={{
+                      width: WIDTH_SCREEN / 3,
+                      height: (WIDTH_SCREEN / 3) * 1.5,
+                    }}
+                    sharedTransitionTag={
+                      'Post' + item.id.toString() + data.id.toString()
+                    }
+                  />
+                </Animated.View>
               </TouchableOpacity>
             )
           }}

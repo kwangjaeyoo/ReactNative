@@ -6,13 +6,18 @@ import {useNavigation} from '@react-navigation/native'
 interface prop {
   title?: string
   isBack?: boolean
+  isBackOnClick?: Function
   bgColor?: string
 }
 
-const Header = ({title, isBack, bgColor}: prop) => {
+const Header = ({title, isBack, isBackOnClick, bgColor}: prop) => {
   const navigation = useNavigation()
   const goBack = () => {
-    navigation.goBack()
+    if (isBackOnClick) {
+      isBackOnClick()
+    } else {
+      navigation.goBack()
+    }
   }
 
   return (
