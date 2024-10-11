@@ -1,26 +1,27 @@
 import {useState} from 'react'
-import {SafeAreaView, Text} from 'react-native'
+import {Text} from 'react-native'
 import WebView from 'react-native-webview'
+
+import {RouteProp, useRoute} from '@react-navigation/native'
 
 import Header from '../Header'
 import LinearProgress from './LinearProgress'
 
-type Props = {
-  navigation: any
-  route: {
-    params: {
-      url: string
-    }
+type Params = {
+  WebviewScreen: {
+    url: string
   }
 }
 
-const WebviewScreen = ({navigation, route}: Props) => {
-  const [url] = useState(route.params?.url)
+const WebviewScreen = () => {
+  const router = useRoute<RouteProp<Params, 'WebviewScreen'>>()
+  const [url] = useState(router.params.url)
+
   const [loading, setLoading] = useState(0)
 
   return (
-    <SafeAreaView className="flex-1">
-      <Header title="Webview" isBack navigation={navigation} />
+    <>
+      <Header title="Webview" isBack />
       {!url || url.length === 0 ? (
         <Text>Error: Invalid URL</Text>
       ) : (
@@ -47,7 +48,7 @@ const WebviewScreen = ({navigation, route}: Props) => {
           />
         </>
       )}
-    </SafeAreaView>
+    </>
   )
 }
 

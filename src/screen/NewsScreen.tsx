@@ -1,11 +1,12 @@
 import {useCallback, useEffect, useState} from 'react'
-import {FlatList, SafeAreaView} from 'react-native'
+import {FlatList} from 'react-native'
 
 import {getNewsApi} from '../api/getNews'
 import {isLoadingStore} from '../store/loading'
 import Header from './Header'
 import NewsItem from './NewsItem'
 
+// TODO react-query
 const NewsScreen = ({navigation}: {navigation: any}) => {
   const loading = isLoadingStore()
   const [news, setNews] = useState([])
@@ -38,7 +39,7 @@ const NewsScreen = ({navigation}: {navigation: any}) => {
   }, [])
 
   return (
-    <SafeAreaView className="flex-1 bg-[#f4f4f4]">
+    <>
       <Header title="SettingsScreen" />
 
       <FlatList
@@ -55,7 +56,7 @@ const NewsScreen = ({navigation}: {navigation: any}) => {
         )}
         keyExtractor={(item, index) => 'key' + index}
       />
-    </SafeAreaView>
+    </>
   )
 }
 

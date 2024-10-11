@@ -1,13 +1,19 @@
 import {Text, TouchableOpacity, View} from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
 
+import {useNavigation} from '@react-navigation/native'
+
 interface prop {
-  title: string
+  title?: string
   isBack?: boolean
-  navigation?: any
 }
 
-const Header = ({title, isBack, navigation}: prop) => {
+const Header = ({title, isBack}: prop) => {
+  const navigation = useNavigation()
+  const goBack = () => {
+    navigation.goBack()
+  }
+
   return (
     <View
       className="
@@ -19,11 +25,7 @@ const Header = ({title, isBack, navigation}: prop) => {
       {isBack && (
         <TouchableOpacity
           className="min-w-10 flex items-center justify-center"
-          onPress={() => {
-            if (navigation) {
-              navigation.goBack()
-            }
-          }}>
+          onPress={goBack}>
           <Icon name="angle-left" size={20} />
         </TouchableOpacity>
       )}
