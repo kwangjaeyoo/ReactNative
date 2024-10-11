@@ -1,16 +1,29 @@
-import {SafeAreaView, ScrollView, Text, View} from 'react-native'
+import {ScrollView, Text, TouchableOpacity, View} from 'react-native'
 
+import {useNavigation} from '@react-navigation/native'
+import {NativeStackNavigationProp} from '@react-navigation/native-stack'
+
+import {NaviParamList} from '../navi/StackNavigation'
 import Header from './Header'
 
+type NavigationProp = NativeStackNavigationProp<NaviParamList, 'instagram'>
+
 const HomeScreen = () => {
+  const navigation = useNavigation<NavigationProp>()
+
   const packageVersion = require('../../package.json')
 
   return (
-    <SafeAreaView className="flex-1">
+    <>
       <Header title="HOME Screen" />
       <ScrollView>
         <View className="p-2">
-          <Text>App Version : {packageVersion.version}</Text>
+          <TouchableOpacity onPress={() => navigation.navigate('instagram')}>
+            <Text>인스타그램 네비게이션</Text>
+            <Text>React Native Reanimated / React Native Gesture Handler</Text>
+          </TouchableOpacity>
+
+          <Text className="mt-4">App Version : {packageVersion.version}</Text>
 
           <Text className="mt-4 mb-2">사용하는 라이블러리</Text>
           {Object.entries(packageVersion.dependencies).map(
@@ -26,7 +39,7 @@ const HomeScreen = () => {
           <View className="h-[1px] bg-[#707070]" />
         </View>
       </ScrollView>
-    </SafeAreaView>
+    </>
   )
 }
 

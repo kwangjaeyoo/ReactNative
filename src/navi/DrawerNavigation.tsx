@@ -59,6 +59,13 @@ const LeftMenuContent = ({navigation}: DrawerContentComponentProps) => {
           navigation.navigate('settings')
         }}
       />
+      <MenuLayout
+        title="Instagram"
+        gotoNavi={() => {
+          navigation.closeDrawer()
+          navigation.navigate('instagram')
+        }}
+      />
     </View>
   )
 }
