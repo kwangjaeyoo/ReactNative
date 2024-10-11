@@ -18,10 +18,10 @@ const Header = ({title, isBack, bgColor}: prop) => {
   return (
     <View
       className={`
-        bg-white
         h-12
-        ${bgColor ? bgColor : 'border-[#fdfdfd] border-b-[1px]'}
-        flex-row`}>
+        flex-row
+        ${bgColor ? bgColor : 'bg-white border-[#fdfdfd] border-b-[1px]'}
+      `}>
       {isBack && (
         <TouchableOpacity
           className="min-w-10 flex items-center justify-center"
