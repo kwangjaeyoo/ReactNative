@@ -60,7 +60,7 @@ const MenuBar = ({state, descriptors, navigation}: BottomTabBarProps) => {
             testID={options.tabBarTestID}
             onPress={onPress}
             onLongPress={onLongPress}
-            className="flex-1 flex items-center justify-center">
+            className="flex-1 flex items-center justify-center border-l-[1px] border-[#939393]">
             <Text
               className={`${isFocused ? 'text-[#673ab7]' : 'text-[#222222]'}`}>
               {label}

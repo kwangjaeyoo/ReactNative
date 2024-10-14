@@ -56,7 +56,7 @@ const LeftMenuContent = ({navigation}: DrawerContentComponentProps) => {
         title="Setting"
         gotoNavi={() => {
           navigation.closeDrawer()
-          navigation.navigate('settings')
+          navigation.navigate('setting')
         }}
       />
       <MenuLayout
