@@ -8,15 +8,16 @@ import {
 } from '@react-navigation/bottom-tabs'
 import {DrawerActions} from '@react-navigation/native'
 
+import AniListScreen from '../screen/AniListScreen'
 import HomeScreen from '../screen/HomeScreen'
 import NewsScreen from '../screen/NewsScreen'
-import SettingsScreen from '../screen/SettingScreen'
+import SettingScreen from '../screen/SettingScreen'
 
 const BottomTab = createBottomTabNavigator()
 
 const MenuBar = ({state, descriptors, navigation}: BottomTabBarProps) => {
   return (
-    <View className="h-10 flex-row">
+    <View className="h-10 flex-row border-t-[1px] border-[#939393]">
       <TouchableOpacity
         className="w-10 flex items-center justify-center"
         onPress={() => {
@@ -84,8 +85,9 @@ const BottomNavigation = () => {
         headerShown: false,
       }}>
       <BottomTab.Screen name="home" component={HomeScreen} />
-      <BottomTab.Screen name="list" component={NewsScreen} />
-      <BottomTab.Screen name="settings" component={SettingsScreen} />
+      <BottomTab.Screen name="NewsList" component={NewsScreen} />
+      <BottomTab.Screen name="AniList" component={AniListScreen} />
+      <BottomTab.Screen name="Setting" component={SettingScreen} />
     </BottomTab.Navigator>
   )
 }

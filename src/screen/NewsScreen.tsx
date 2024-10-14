@@ -40,7 +40,7 @@ const NewsScreen = ({navigation}: {navigation: any}) => {
 
   return (
     <>
-      <Header title="SettingsScreen" />
+      <Header title="News in open api" />
 
       <FlatList
         className="p-2"

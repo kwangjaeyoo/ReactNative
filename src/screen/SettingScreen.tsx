@@ -2,13 +2,13 @@ import {Text} from 'react-native'
 
 import Header from './Header'
 
-const SettingsScreen = () => {
+const SettingScreen = () => {
   return (
     <>
-      <Header title="SettingsScreen" />
-      <Text>SettingsScreen </Text>
+      <Header title="SettingScreen" />
+      <Text>SettingScreen </Text>
     </>
   )
 }
 
-export default SettingsScreen
+export default SettingScreen
