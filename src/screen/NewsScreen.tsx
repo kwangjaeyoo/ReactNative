@@ -2,7 +2,7 @@ import {useCallback, useEffect, useState} from 'react'
 import {FlatList} from 'react-native'
 
 import {getNewsApi} from '../api/getNews'
-import {isLoadingStore} from '../store/loading'
+import {isLoadingStore} from '../store/LoadingViewStore'
 import Header from './Header'
 import NewsItem from './NewsItem'
 
