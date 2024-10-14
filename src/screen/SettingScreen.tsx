@@ -2,17 +2,17 @@ import {useCallback} from 'react'
 import {Text, TouchableOpacity} from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons'
 
-import {showReactQueryBubbleStore} from '../store/ShowQueryBubbleStore'
+import {useBubbleVisibileStore} from '../store/useBubbleVisibileStore'
 import Header from './Header'
 
 const SettingScreen = () => {
-  const showBubble = showReactQueryBubbleStore()
+  const showBubble = useBubbleVisibileStore()
 
   const bubbleSet = useCallback(() => {
     if (showBubble.show) {
-      showBubble.hiddenShow()
+      showBubble.hideBubble()
     } else {
-      showBubble.onShow()
+      showBubble.showBubble()
     }
   }, [showBubble])
 

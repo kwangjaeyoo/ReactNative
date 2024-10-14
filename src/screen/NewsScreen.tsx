@@ -2,13 +2,13 @@ import {useCallback, useEffect, useState} from 'react'
 import {FlatList} from 'react-native'
 
 import {getNewsApi} from '../api/getNews'
-import {isLoadingStore} from '../store/LoadingViewStore'
+import {useLoadingStore} from '../store/useLoadingStore'
 import Header from './Header'
 import NewsItem from './NewsItem'
 
 // TODO react-query
 const NewsScreen = ({navigation}: {navigation: any}) => {
-  const loading = isLoadingStore()
+  const loading = useLoadingStore()
   const [news, setNews] = useState([])
 
   const callApi = useCallback(async () => {
@@ -22,13 +22,13 @@ const NewsScreen = ({navigation}: {navigation: any}) => {
         setNews(data)
         // console.log(data.length)
         // console.log(data[2])
+      } else {
       }
     } catch (e) {
     } finally {
       loading.offLoading()
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [loading])
 
   useEffect(() => {
     callApi()

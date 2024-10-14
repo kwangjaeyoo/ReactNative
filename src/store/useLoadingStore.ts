@@ -1,12 +1,12 @@
 import {create} from 'zustand'
 
-interface loadingBoolean {
+interface loadingState {
   load: boolean
   onLoading: () => void
   offLoading: () => void
 }
 
-export const isLoadingStore = create<loadingBoolean>(set => ({
+export const useLoadingStore = create<loadingState>(set => ({
   load: false,
   onLoading: () => {
     set({load: true})

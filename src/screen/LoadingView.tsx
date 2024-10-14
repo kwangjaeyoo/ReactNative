@@ -1,9 +1,9 @@
 import {ActivityIndicator, Text, View} from 'react-native'
 
-import {isLoadingStore} from '../store/LoadingViewStore'
+import {useLoadingStore} from '../store/useLoadingStore'
 
 const LoadingView = () => {
-  const load = isLoadingStore(state => state.load)
+  const load = useLoadingStore(state => state.load)
 
   return (
     <>
