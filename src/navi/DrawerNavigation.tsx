@@ -88,7 +88,6 @@ const DrawerNavigation = () => {
         paddingRight: insets.right,
       }}>
       <Drawer.Navigator
-        initialRouteName="Home"
         screenOptions={{
           headerShown: false,
         }}

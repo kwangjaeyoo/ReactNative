@@ -10,6 +10,8 @@ import StackNavigation from './src/navi/StackNavigation'
 import {useBubbleVisibileStore} from './src/store/useBubbleVisibileStore'
 
 function App(): React.JSX.Element {
+  console.log('APP START !!!')
+
   const queryClient = new QueryClient()
   const showBubble = useBubbleVisibileStore()
 

@@ -35,13 +35,11 @@ const StackNavigation = () => {
           screenOptions={{headerShown: false}}>
           <Stack.Screen name="menu" component={DrawerNavigation} />
           <Stack.Screen name="webview" component={WebviewScreen} />
-
           <Stack.Screen name="instagram" component={InstagramScreen} />
           <Stack.Screen name="postScreen" component={PostScreen} />
           <Stack.Screen name="detailScreen" component={DetailScreen} />
         </Stack.Navigator>
       </NavigationContainer>
-
       <LoadingView />
     </SafeAreaView>
   )
