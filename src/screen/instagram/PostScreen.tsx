@@ -6,7 +6,12 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated'
 
-import {RouteProp, useNavigation, useRoute} from '@react-navigation/native'
+import {
+  RouteProp,
+  useFocusEffect,
+  useNavigation,
+  useRoute,
+} from '@react-navigation/native'
 import {NativeStackNavigationProp} from '@react-navigation/native-stack'
 
 import {NaviParamList} from '../../navi/StackNavigation'
@@ -34,9 +39,11 @@ const PostScreen = () => {
     opacity: avatarOpacity.value,
   }))
 
-  const onBackCallback = useCallback(() => {
-    avatarOpacity.value = withTiming(1, {duration: 300})
-  }, [avatarOpacity])
+  useFocusEffect(
+    useCallback(() => {
+      avatarOpacity.value = withTiming(1, {duration: 300})
+    }, [avatarOpacity]),
+  )
 
   const onNavigateDetail = useCallback(
     (currentData: {id: number; image: string}) => {
@@ -44,11 +51,10 @@ const PostScreen = () => {
       navigation.navigate('detailScreen', {
         data: currentData,
         parentId: data.id,
-        callback: onBackCallback,
         from: 'Post',
       })
     },
-    [avatarOpacity, data.id, navigation, onBackCallback],
+    [avatarOpacity, data.id, navigation],
   )
 
   return (

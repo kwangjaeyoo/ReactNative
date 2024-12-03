@@ -15,7 +15,7 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated'
 
-import {useNavigation} from '@react-navigation/native'
+import {useFocusEffect, useNavigation} from '@react-navigation/native'
 import {NativeStackNavigationProp} from '@react-navigation/native-stack'
 
 import {NaviParamList} from '../../navi/StackNavigation'
@@ -51,21 +51,23 @@ const MainImageView: React.FC<IMainImage> = ({id, images, avatar, name}) => {
     opacity: avatarOpacity.value,
   }))
 
-  const onBackCallback = useCallback(() => {
-    avatarOpacity.value = withTiming(1, {duration: 300})
-  }, [avatarOpacity])
+  useFocusEffect(
+    useCallback(() => {
+      avatarOpacity.value = withTiming(1, {duration: 300})
+    }, [avatarOpacity]),
+  )
 
   const onNavigateDetail = useCallback(
     (data: {id: number; image: string}) => {
+      console.log('avatarOpacity', avatarOpacity.value)
       avatarOpacity.value = withTiming(0, {duration: 300})
       navigation.navigate('detailScreen', {
         data,
         parentId: id,
-        callback: onBackCallback,
         from: 'List',
       })
     },
-    [avatarOpacity, id, navigation, onBackCallback],
+    [avatarOpacity, id, navigation],
   )
 
   return (

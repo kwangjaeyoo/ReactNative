@@ -18,7 +18,6 @@ type RouteParams = {
     data: {id: string; image: string}
     from?: any
     parentId?: number
-    callback?: () => void
   }
 }
 
@@ -26,7 +25,7 @@ const DetailScreen = () => {
   const navigation = useNavigation()
 
   const router = useRoute<RouteProp<RouteParams, 'DetailScreen'>>()
-  const {data, parentId, callback, from} = router.params
+  const {data, parentId, from} = router.params
 
   const translateX = useSharedValue(0)
   const translateY = useSharedValue(0)
@@ -57,7 +56,7 @@ const DetailScreen = () => {
 
   const goBackFun = () => {
     opacity.value = 0
-    callback && runOnJS(callback)()
+    // callback && runOnJS(callback)()
     runOnJS(navigation.goBack)()
   }
 

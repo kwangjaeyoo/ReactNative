@@ -20,7 +20,6 @@ const HomeScreen = () => {
         <View className="p-2">
           <TouchableOpacity
             onPress={() => {
-              console.log('!!!!!')
               navigation.navigate('instagram')
             }}>
             <Text>인스타그램 네비게이션</Text>
